@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         })
 
         binding.registerButton.setOnClickListener(View.OnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_registerFragment)
+            navController.navigate(R.id.navigation_register)
         })
 
         homeViewModel?.getIsLogin()?.observe(viewLifecycleOwner, Observer {
