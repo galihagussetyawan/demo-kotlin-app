@@ -4,9 +4,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app.databinding.PostItemBinding
 import com.example.app.model.Post
+import com.google.android.material.snackbar.Snackbar
 
 class HomeAdapter: RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
@@ -27,6 +29,10 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
             binding.title.text = dataList?.get(position)?.title + position.toString()
+            binding.title.setOnClickListener(View.OnClickListener {
+                Toast.makeText(it.context, "Your position is ${position}", Toast.LENGTH_SHORT).show()
+                Snackbar.make(holder.itemView, "asdasd", Snackbar.LENGTH_SHORT).show()
+            })
         }
     }
 
