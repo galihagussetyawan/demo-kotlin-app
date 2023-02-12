@@ -14,6 +14,7 @@ import androidx.navigation.Navigation
 import com.example.app.R
 import com.example.app.`view-model`.HomeViewModel
 import com.example.app.data.network.Retrofit
+import com.example.app.data.network.adapter.HomeAdapter
 import com.example.app.data.network.repository.PostRepository
 import com.example.app.data.network.service.PostService
 import com.example.app.databinding.FragmentHomeBinding
@@ -27,6 +28,7 @@ class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by activityViewModels<HomeViewModel>()
     lateinit var navController: NavController
     private var postRepository: PostRepository? = null
+    private lateinit var homeAdapter: HomeAdapter
 
     init {
         postRepository = PostRepository()
@@ -63,6 +65,7 @@ class HomeFragment : Fragment() {
         })
 
         getData()
+        setupAdapter()
     }
 
     fun getData() {
@@ -73,5 +76,10 @@ class HomeFragment : Fragment() {
             val postList: List<Post> = it
             binding.homeFragmentText.text = postList?.get(1)?.title
         })
+    }
+
+    fun setupAdapter() {
+        homeAdapter = HomeAdapter()
+        binding.postList.adapter = homeAdapter
     }
 }
