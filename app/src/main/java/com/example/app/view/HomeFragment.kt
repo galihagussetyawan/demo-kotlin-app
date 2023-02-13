@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
@@ -52,8 +53,10 @@ class HomeFragment : Fragment() {
             homeViewModel.toggle()
         })
 
+        val bundle = bundleOf("amount" to "amount")
+
         binding.registerButton.setOnClickListener(View.OnClickListener {
-            navController.navigate(R.id.navigation_register)
+            navController.navigate(R.id.navigation_register, bundle)
         })
 
         binding.layoutAppBar.searchBar.setOnClickListener(View.OnClickListener {

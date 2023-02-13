@@ -21,5 +21,9 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (arguments?.getString("amount") != null) {
+            binding.title.text = arguments?.getString("amount")
+        }
     }
 }
