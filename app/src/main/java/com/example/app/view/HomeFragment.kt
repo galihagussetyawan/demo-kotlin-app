@@ -1,7 +1,6 @@
 package com.example.app.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,19 +13,15 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.app.R
 import com.example.app.`view-model`.HomeViewModel
-import com.example.app.data.network.Retrofit
 import com.example.app.data.network.adapter.HomeAdapter
 import com.example.app.data.network.repository.PostRepository
-import com.example.app.data.network.service.PostService
 import com.example.app.databinding.FragmentHomeBinding
 import com.example.app.model.Post
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.google.android.material.search.SearchView
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private val homeViewModel: HomeViewModel by activityViewModels<HomeViewModel>()
+    private val homeViewModel: HomeViewModel by activityViewModels()
     lateinit var navController: NavController
     private var postRepository: PostRepository? = null
     private lateinit var homeAdapter: HomeAdapter
@@ -49,19 +44,15 @@ class HomeFragment : Fragment() {
 
         navController = Navigation.findNavController(view)
 
-        binding.buttonHome.setOnClickListener(View.OnClickListener {
+        binding.buttonHome.setOnClickListener {
             homeViewModel.toggle()
-        })
+        }
 
         val bundle = bundleOf("amount" to "amount")
 
-        binding.registerButton.setOnClickListener(View.OnClickListener {
+        binding.registerButton.setOnClickListener {
             navController.navigate(R.id.navigation_register, bundle)
-        })
-
-        binding.layoutAppBar.searchBar.setOnClickListener(View.OnClickListener {
-            binding.layoutAppBar.searchView.show()
-        })
+        }
 
         homeViewModel?.getIsLogin()?.observe(viewLifecycleOwner, Observer {
             binding.homeFragmentText.text = it.toString()
@@ -75,14 +66,15 @@ class HomeFragment : Fragment() {
         var data: LiveData<List<Post>>? = null
 
         data = postRepository?.fetchAllPosts()
-        data?.observe(viewLifecycleOwner, Observer {
+        data?.observe(viewLifecycleOwner) {
             val postList: List<Post> = it
             binding.homeFragmentText.text = postList?.get(1)?.title
-        })
+        }
     }
 
     fun setupAdapter() {
         homeAdapter = HomeAdapter()
         binding.postList.adapter = homeAdapter
     }
+
 }
