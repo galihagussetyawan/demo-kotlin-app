@@ -17,4 +17,9 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
     </fragment>
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.example.app.view.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>

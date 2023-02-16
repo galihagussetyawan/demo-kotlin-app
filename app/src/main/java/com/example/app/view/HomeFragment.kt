@@ -17,7 +17,6 @@ import com.example.app.data.network.adapter.HomeAdapter
 import com.example.app.data.network.repository.PostRepository
 import com.example.app.databinding.FragmentHomeBinding
 import com.example.app.model.Post
-import com.google.android.material.search.SearchView
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding

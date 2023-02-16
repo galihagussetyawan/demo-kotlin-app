@@ -10,4 +10,8 @@
         android:icon="@drawable/ic_launcher_background"
         android:title="Register" />
 
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Search" />
 </menu>
