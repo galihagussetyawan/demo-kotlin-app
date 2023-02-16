@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
+        activity?.title = "Home Cokkk"
         return binding.root
     }
 
