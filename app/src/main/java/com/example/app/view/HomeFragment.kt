@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -35,7 +36,6 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
-        activity?.title = "Home Cokkk"
         return binding.root
     }
 
@@ -62,7 +62,7 @@ class HomeFragment : Fragment() {
         setupAdapter()
     }
 
-    fun getData() {
+    private fun getData() {
         var data: LiveData<List<Post>>? = null
 
         data = postRepository?.fetchAllPosts()
@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun setupAdapter() {
+    private fun setupAdapter() {
         homeAdapter = HomeAdapter()
         binding.postList.adapter = homeAdapter
     }
