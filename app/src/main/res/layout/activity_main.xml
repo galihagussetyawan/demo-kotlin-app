@@ -14,7 +14,19 @@
             app:layout_constraintTop_toTopOf="parent"
             android:background="@color/material_dynamic_primary50">
 
+            <com.google.android.material.search.SearchBar
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.search.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_anchor="@id/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
         android:id="@+id/nav_host_fragment"

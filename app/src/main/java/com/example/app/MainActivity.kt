@@ -1,15 +1,12 @@
 package com.example.app
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.app.databinding.ActivityMainBinding
@@ -29,20 +26,30 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment)
 
         setupNav()
+        setupToolbar()
     }
 
     private fun setupNav() {
         val bottomNavigationView: BottomNavigationView = binding.bottomNavView
 
         bottomNavigationView.setupWithNavController(navController)
+    }
 
-        appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_home
-        ))
+    private fun setupToolbar() {
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home
+            )
+        )
 
         val toolbar = binding.toolbar
+
         setSupportActionBar(toolbar)
         setupActionBarWithNavController(navController)
+
+        binding.searchBar.setOnClickListener {
+            binding.searchView.show()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
